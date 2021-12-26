@@ -20,7 +20,7 @@ struct book{
     bool issue;
 };
 
-book libraray [1000];
+book Library [1000];
 
 void addBooks ();
 void displayBooks ();
@@ -139,26 +139,26 @@ void addBooks ()
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Enter Book ID:"  << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
-    cin >> libraray[i].ID;
+    cin >> Library[i].ID;
     cin.get(garbage);
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Enter Book Title:"  << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
-    getline(cin, libraray[i].title);
+    getline(cin, Library[i].title);
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Enter Author Name:"  << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
-    getline(cin, libraray[i].author);
+    getline(cin, Library[i].author);
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Enter Book Price:"  << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
-    cin >> libraray[i].price;
+    cin >> Library[i].price;
     cin.get(garbage);
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
@@ -167,9 +167,9 @@ void addBooks ()
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
     getline(cin, issueFlag);
         if (issueFlag=="Issued" || issueFlag=="issued")
-            libraray[countBooks].issue = true;
+            Library[countBooks].issue = true;
         if (issueFlag=="Unissued" || issueFlag=="unissued")
-            libraray[countBooks].issue = false;
+            Library[countBooks].issue = false;
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Above Book Information has been Added." <<  right << "|" << endl;
@@ -196,11 +196,11 @@ void displayBooks ()
     for (int i=0; i<countBooks; i++)
     {
     cout << setw(9) << setfill(' ') << " " << "|"
-         << " " << setw(8) << setfill(' ') << left << libraray[i].ID << "|"
-         << " " << setw(45) << setfill(' ') << left << libraray[i].title<< "|"
-         << " " << setw(27) << setfill(' ') << left << libraray[i].author << "|"
-         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << libraray[i].price << "|";
-    if (libraray[i].issue == 0)
+         << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
+         << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
+         << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
+         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
+    if (Library[i].issue == 0)
         cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
     else
         cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
@@ -235,14 +235,14 @@ void authorBooks ()
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     for (int i=0; i<countBooks; i++)
     {
-    if (libraray[i].author == authorName)
+    if (Library[i].author == authorName)
     {
     cout << setw(9) << setfill(' ') << " " << "|"
-         << " " << setw(8) << setfill(' ') << left << libraray[i].ID << "|"
-         << " " << setw(45) << setfill(' ') << left << libraray[i].title<< "|"
-         << " " << setw(27) << setfill(' ') << left << libraray[i].author << "|"
-         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << libraray[i].price << "|";
-    if (libraray[i].issue == 0)
+         << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
+         << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
+         << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
+         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
+    if (Library[i].issue == 0)
         cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
     else
         cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
@@ -262,14 +262,14 @@ void unissuedBooks ()
     output_unissuedBooks ();
     for (int i=0; i<countBooks; i++)
     {
-    if (libraray[i].issue == true )
+    if (Library[i].issue == true )
     {
     cout << setw(9) << setfill(' ') << " " << "|"
-         << " " << setw(8) << setfill(' ') << left << libraray[i].ID << "|"
-         << " " << setw(45) << setfill(' ') << left << libraray[i].title<< "|"
-         << " " << setw(27) << setfill(' ') << left << libraray[i].author << "|"
-         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << libraray[i].price << "|";
-    if (libraray[i].issue == 0)
+         << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
+         << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
+         << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
+         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
+    if (Library[i].issue == 0)
         cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
     else
         cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
@@ -293,11 +293,11 @@ void sortBooks ()
     {
     for (int i=0; i<countBooks-1; i++)
     {
-        if ( libraray[i].ID > libraray[i+1].ID  )
+        if ( Library[i].ID > Library[i+1].ID  )
         {
-            hold = libraray[i] ;
-            libraray[i]  = libraray[i+1] ;
-            libraray[i+1]  = hold;
+            hold = Library[i] ;
+            Library[i]  = Library[i+1] ;
+            Library[i+1]  = hold;
         }
     }
     }
@@ -339,17 +339,17 @@ void loadBooks ()
     string issueFlag;
     while(!indata.eof())
     {
-        indata >> libraray[countBooks].ID;
+        indata >> Library[countBooks].ID;
         indata.get(garbage);
-        getline(indata, libraray[countBooks].title);
-        getline(indata, libraray[countBooks].author);
-        indata >> libraray[countBooks].price;
+        getline(indata, Library[countBooks].title);
+        getline(indata, Library[countBooks].author);
+        indata >> Library[countBooks].price;
         indata.get(garbage);
         getline(indata, issueFlag);
         if (issueFlag=="Issued" || issueFlag=="issued")
-            libraray[countBooks].issue = true;
+            Library[countBooks].issue = true;
         if (issueFlag=="Unissued" || issueFlag=="unissued")
-            libraray[countBooks].issue = false;
+            Library[countBooks].issue = false;
 
         countBooks++;
     }
@@ -384,11 +384,11 @@ void exportBooksInfo()
     for (int i=0; i<countBooks; i++)
     {
     outdata << setw(9) << setfill(' ') << " " << "|"
-            << " " << setw(8) << setfill(' ') << left << libraray[i].ID << "|"
-            << " " << setw(45) << setfill(' ') << left << libraray[i].title<< "|"
-            << " " << setw(27) << setfill(' ') << left << libraray[i].author << "|"
-            << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << libraray[i].price << "|";
-    if (libraray[i].issue == 0)
+            << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
+            << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
+            << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
+            << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
+    if (Library[i].issue == 0)
         outdata << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
     else
         outdata << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
