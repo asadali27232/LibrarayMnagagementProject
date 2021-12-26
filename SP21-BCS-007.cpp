@@ -303,10 +303,7 @@ void unissuedBooks ()
          << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
          << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
          << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
-    if (Library[i].issue == true)
-        cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
-    if (Library[i].issue == false)
-        cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
+    cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     totalUnissued = i;
     }
@@ -533,7 +530,7 @@ void output_sortBooks ()
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
 }
-void output_loadBooks ()
+void output_loadBooks()
 {
     system("CLS");
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('=') << "=" << "|" << endl;
