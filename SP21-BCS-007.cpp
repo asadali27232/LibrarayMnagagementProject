@@ -61,7 +61,7 @@ int main()
         cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "1.   " << "|" << setw(45) << setfill(' ') << left <<  " Add Books Information" << "|" << setw(13) << setfill(' ') << right <<  "[ A ]    " << "|" << endl;
         cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
 
-        cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "2.   " << "|" << setw(45) << setfill(' ') << left <<  " Display Books Information" << "|" << setw(13) << setfill(' ') << right <<  "[ D ]    " << "|" << endl;
+        cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "2.   " << "|" << setw(45) << setfill(' ') << left <<  " Search Books by ID" << "|" << setw(13) << setfill(' ') << right <<  "[ D ]    " << "|" << endl;
         cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
 
         cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "3.   " << "|" << setw(45) << setfill(' ') << left <<  " List all Books of an Author" << "|" << setw(13) << setfill(' ') << right <<  "[ R ]    " << "|" << endl;
@@ -129,6 +129,14 @@ int main()
 void addBooks ()
 {
     output_addBooks ();
+    if (countBooks == 1000)
+    {
+        cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
+        cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " There is no Space for more Books. Library is already Full!"  << right << "|" << endl;
+        cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
+    }
+    else
+    {
     string issueFlag;
     char addMore;
     bool addMoreFlag;
@@ -167,9 +175,9 @@ void addBooks ()
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
     getline(cin, issueFlag);
         if (issueFlag=="Issued" || issueFlag=="issued")
-            Library[countBooks].issue = true;
+            Library[i].issue = true;
         if (issueFlag=="Unissued" || issueFlag=="unissued")
-            Library[countBooks].issue = false;
+            Library[i].issue = false;
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Above Book Information has been Added." <<  right << "|" << endl;
@@ -181,11 +189,16 @@ void addBooks ()
     cin >> addMore;
     if (addMore=='Y' || addMore=='y')
             addMoreFlag = true;
-    if (addMore=='N' || addMore=='n')
+    else
             addMoreFlag = false;
     i++;
     } while(addMoreFlag);
     countBooks = i;
+    }
+    cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Books Information has been added Successfully." << right << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Press Enter Key to Enter Main Menu Again...!" << "|" << right << endl;
+    cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cin.get(garbage);
     cin.clear();
     cin.ignore(100, '\n');
@@ -193,23 +206,43 @@ void addBooks ()
 void displayBooks ()
 {
     output_displayBooks ();
+    int searchID;
+    string authorName;
+    cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Enter Book ID to Search:"  << right << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "| ";
+    cin >> searchID;
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
+    cout << setw(9) << setfill(' ') << " " << "|"
+         << " " << setw(8) << setfill(' ') << left <<  "ID" << "|"
+         << " " << setw(45) << setfill(' ') << left <<  "Title" << "|"
+         << " " << setw(27) << setfill(' ') << left <<  "Author" << "|"
+         << " " << setw(6) << setfill(' ') << left <<  "Price" << "|"
+         << " " << setw(9) << setfill(' ') << left <<  " Status" << "|"<< endl;
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     for (int i=0; i<countBooks; i++)
+    {
+    if (Library[i].ID == searchID)
     {
     cout << setw(9) << setfill(' ') << " " << "|"
          << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
          << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
          << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
          << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
-    if (Library[i].issue == 0)
+    if (Library[i].issue == true)
         cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
-    else
+    if (Library[i].issue == false)
         cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     }
+    }
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
-    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " All Books are Displayed Successfully." <<  right << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " All Books of given ID are Displayed Successfully." <<  right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Press Enter Key to Enter Main Menu Again...!" << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
+
     cin.get(garbage);
     cin.clear();
     cin.ignore(100, '\n');
@@ -242,9 +275,9 @@ void authorBooks ()
          << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
          << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
          << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
-    if (Library[i].issue == 0)
+    if (Library[i].issue == true)
         cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
-    else
+    if (Library[i].issue == false)
         cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     }
@@ -260,24 +293,26 @@ void authorBooks ()
 void unissuedBooks ()
 {
     output_unissuedBooks ();
+    int totalUnissued;
     for (int i=0; i<countBooks; i++)
     {
-    if (Library[i].issue == true )
+    if (Library[i].issue == false )
     {
     cout << setw(9) << setfill(' ') << " " << "|"
          << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
          << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
          << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
          << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
-    if (Library[i].issue == 0)
+    if (Library[i].issue == true)
         cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
-    else
+    if (Library[i].issue == false)
         cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
     cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
+    totalUnissued = i;
     }
     }
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
-    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " All Unissued Books are Displayed Successfully." <<  right << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(35) << setfill(' ') << left <<  " Total count of unissued Books is " << setw(4) << setfill(' ') << totalUnissued << setw(21) << setfill(' ') <<  right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  " Press Enter Key to Enter Main Menu Again...!" << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cin.get(garbage);
@@ -300,6 +335,19 @@ void sortBooks ()
             Library[i+1]  = hold;
         }
     }
+    }
+    for (int i=0; i<countBooks; i++)
+    {
+    cout << setw(9) << setfill(' ') << " " << "|"
+         << " " << setw(8) << setfill(' ') << left << Library[i].ID << "|"
+         << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
+         << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
+         << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
+    if (Library[i].issue == true)
+        cout << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
+    if (Library[i].issue == false)
+        cout << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     }
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('-') << "-" << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(8) << setfill(' ') << right <<  "==>  " << "|" << setw(59) << setfill(' ') << left <<  "All Books sorted by ID Successfully." << right << "|" << endl;
@@ -388,9 +436,9 @@ void exportBooksInfo()
             << " " << setw(45) << setfill(' ') << left << Library[i].title<< "|"
             << " " << setw(27) << setfill(' ') << left << Library[i].author << "|"
             << " " << setw(6) << setfill(' ') << left << setprecision(1) << showpoint << fixed << Library[i].price << "|";
-    if (Library[i].issue == 0)
+    if (Library[i].issue == true)
         outdata << " " << setw(9) << setfill(' ') << left << "Issued" << "|"<< endl;
-    else
+    if (Library[i].issue == false)
         outdata << " " << setw(9) << setfill(' ') << left << "Unissued" << "|"<< endl;
     outdata << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
     }
@@ -423,19 +471,9 @@ void output_displayBooks ()
     cout << setw(25) << setfill(' ') << " " << "|" << setw(68) << setfill('=') << "=" << "|" << endl;
 
     cout << setw(25) << setfill(' ') << " " <<  "|" << setw(68) << setfill('=') << "=" << "|" << endl;
-    cout << setw(25) << setfill(' ') << " " << "|" << setw(25) << setfill(' ') << " " << setw(18) << "Display All Books" << setw(26) << setfill(' ') << right << "|" << endl;
+    cout << setw(25) << setfill(' ') << " " << "|" << setw(21) << setfill(' ') << " " << setw(25) << "Display Books of Given ID" << setw(23) << setfill(' ') << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(68) << setfill('=') << "=" << "|" << endl;
     cout << endl;
-
-    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
-    cout << setw(9) << setfill(' ') << " " << "|"
-         << " " << setw(8) << setfill(' ') << left <<  "ID" << "|"
-         << " " << setw(45) << setfill(' ') << left <<  "Title" << "|"
-         << " " << setw(27) << setfill(' ') << left <<  "Author" << "|"
-         << " " << setw(6) << setfill(' ') << left <<  "Price" << "|"
-         << " " << setw(9) << setfill(' ') << left <<  " Status" << "|"<< endl;
-    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
-    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
 
 }
 void output_authorBooks ()
@@ -484,6 +522,16 @@ void output_sortBooks ()
     cout << setw(25) << setfill(' ') << " " << "|" << setw(22) << setfill(' ') << " " << setw(23) << "Sorting Books by Book ID" << setw(23) << setfill(' ') << right << "|" << endl;
     cout << setw(25) << setfill(' ') << " " << "|" << setw(68) << setfill('=') << "=" << "|" << endl;
     cout << endl;
+
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
+    cout << setw(9) << setfill(' ') << " " << "|"
+         << " " << setw(8) << setfill(' ') << left <<  "ID" << "|"
+         << " " << setw(45) << setfill(' ') << left <<  "Title" << "|"
+         << " " << setw(27) << setfill(' ') << left <<  "Author" << "|"
+         << " " << setw(6) << setfill(' ') << left <<  "Price" << "|"
+         << " " << setw(9) << setfill(' ') << left <<  " Status" << "|"<< endl;
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
+    cout << setw(9) << setfill(' ') << " " <<  "|" << setw(104) << setfill('-') << "-" << "|" << endl;
 }
 void output_loadBooks ()
 {
