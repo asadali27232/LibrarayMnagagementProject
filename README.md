@@ -2,6 +2,10 @@
 
 Welcome to the **Library Management Project** repository! This project is a console application with a text-based graphical user interface (GUI), creatively designed using text symbols to manage library operations. 
 
+## Technologies Used
+
+![C++ Badge](https://img.shields.io/badge/-C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)
+
 ## Project Description
 
 The Library Management Project is designed to emulate the functions of a library, allowing users to interact with a virtual library system. It offers the following features:
@@ -65,6 +69,13 @@ Example of GUI:
          |--------------------------------------------------------------------------------------------------------|
          | 2100706 | THE SOUND AND THE FURY                       | William Faulkner           | 530.0 | Unissued |
          |--------------------------------------------------------------------------------------------------------| 
+
+## How to Use
+
+1. Clone or download this repository to your local machine.
+2. Compile and run the program according to your preferred programming language.
+3. Follow the on-screen menu to interact with the library management system.
+4. Explore the library's functions and enjoy managing your virtual library!
 
 ### 📫 Let's Connect
 
